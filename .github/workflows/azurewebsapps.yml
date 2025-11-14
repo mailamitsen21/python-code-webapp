@@ -29,16 +29,16 @@ jobs:
         run: |
           python -c "import pkgutil, sys; assert pkgutil.find_loader('gunicorn')"
 
-      - name: Login to Azure (OIDC)
+      - name: Login to Azure using OIDC
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'app-cicd'
+          app-name: app-cicd   # replace with real name
           slot-name: 'production'
           package: .
