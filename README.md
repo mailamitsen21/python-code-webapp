@@ -1,2 +1,2 @@
 # python-code-webapp
-this is to deploy webapp to Azure.
+this is to deploy python application to webapp to Azure.
